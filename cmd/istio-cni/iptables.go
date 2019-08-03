@@ -41,6 +41,7 @@ func (ipt *iptables) Program(netns string, rdrct *Redirect) error {
 	nsSetupExecutable := fmt.Sprintf("%s/%s", nsSetupBinDir, nsSetupProg)
 	nsenterArgs := []string{
 		netnsArg,
+		"--",
 		nsSetupExecutable,
 		"-p", rdrct.targetPort,
 		"-u", rdrct.noRedirectUID,
